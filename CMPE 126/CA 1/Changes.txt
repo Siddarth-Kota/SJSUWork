@@ -1,0 +1,12 @@
+First change we made was adding different sounds to the makesound function in order to have different sounds for the child classes
+we added all the required components of the Parent Animal class
+we added the attributes for the Dog and Cat class and created constructors for both of the child classes
+we then added all the functions for the main function to test.
+we had some difficulties compiling the file without using g++ for both the main file and the Animal.cpp file
+we fixed this issue by including the Animal.cpp in the main class so it is compiled alongside the rest of the files
+For the Additional extensions we added an output operator that prints all the relevant information specific to that class
+We then added a playGame function that prints a specific game based on which animal is doing the action
+Then we overloaded the makeSound function by adding an argument for number of times it should print the sound
+Next we added a protected section that includes a print function for output that the overloaded operator uses.
+Lastly we added a eatFood function with overrides in the dog and cat classes.
+Overall we learned a lot about function heirarchy and how virtual functions work

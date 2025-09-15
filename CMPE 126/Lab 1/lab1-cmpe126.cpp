@@ -8,6 +8,7 @@ using namespace std;
 int main() {
     
     //[LP]
+    cout << "LP" << endl;
     ComplexNumber c1;
     ComplexNumber c2(1,-5);
     ComplexNumber c3(2);
@@ -23,7 +24,7 @@ int main() {
     cout << c3;
 
     //[HP]
-    cout << "HP" << endl;
+    cout << "\nHP" << endl;
     ifstream inFile("ComplexInput.txt");
     ofstream outFile("ComplexOutput.txt");
     if(!inFile || !outFile) {

@@ -1,0 +1,9 @@
+1. [LP] I needed to use three constructors: a default constructor (no arguments given), a constructor with only the real component, and a constructor with both real and imaginary components. One constructor is not enough because each use case has different initial variables and thus needs its own constructor
+
+2. [HP] The difference between lines 5 and 6 is that both output complex numbers, but to support line 5, I needed to overload the << operator in the ComplexNumber class. Line 6 works in exactly the same way only this time prints 2 different ComplexNumber objects instead of 1. No special implementation is needed.
+
+3. [HP] I did not need to overload the assignment operator for the shown operations, because the default assignment operator works for assigning one ComplexNumber to another. I only need to overload the assignment operator when setting it to something other than a ComplexNumber, like a real number.
+
+4. [HP] To support line 8 , I needed to overload the + operator to handle addition between a ComplexNumber and another number type like int. The code wouldn't work if I tried to do c3=realNum+c3 since I haven't defined the operator for realNum + ComplexNumber. I have only defined ComplexNumber + realNum.
+
+5. [HP] For line 9, I needed to overload the >> operator for the to allow input in the correct format. To do this I read the user input as a string and checked if there was a + or - sign. If there was then I split the string into a real and an imaginary component. I saved the real component and saved the imaginary component after removing the i at the end. In the case that it was only a real or only a imaginary component I checked for an i and saved it accordingly.

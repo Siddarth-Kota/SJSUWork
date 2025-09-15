@@ -13,7 +13,6 @@ int main() {
     ComplexNumber c1;
     ComplexNumber c2(1,-5);
     ComplexNumber c3(2);
-    ComplexNumber test(2,3);
     int realNum = 3;
     cout << c1;
     cout << c2 << "" << c3;

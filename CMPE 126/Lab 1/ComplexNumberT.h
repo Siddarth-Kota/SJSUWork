@@ -5,14 +5,14 @@
 #include <iostream>
 #include <algorithm>
 
-template <typename t = int> class complexNumberT {
+template <typename T = int> class complexNumberT {
     private:
         T val1;
         T val2;
     public:
-        complexNumberT() : val1(0), imag(0) {}
-        complexNumberT(T r) : val1(r), imag(0) {}
-        complexNumberT(T r, T i) : val1(r), imag(i) {}
+        complexNumberT() : val1(0), val2(0) {}
+        complexNumberT(T r) : val1(r), val2(0) {}
+        complexNumberT(T r, T i) : val1(r), val2(i) {}
 
         void setReal(T r) {val1 = r;}
         void setImag(T i) {val2 = i;}

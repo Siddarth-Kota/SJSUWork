@@ -1,0 +1,5 @@
+Task 1:
+1. [LP] Multiple constructors were needed: a default constructor, a constructor with feet only, and a constructor with feet and inches. One constructor is not enough because different initialization scenarios require different parameters.
+2. [HP] There is no functional difference between lines 5 and 6. They both output length by overloading the << operator. Line 6 just prints 2 lengths instead of 1. No special implementation is needed.
+3. [HP] None of the above operations needed me to overlaod the assignment operator. I would only need to overload it when setting a class object to another value or object not part of that class.
+4. [HP] To output the length object I needed to overload the << operator. To output inches + h3, I would first need that << operator to be overloaded and define a + operator for an int + a length object. The current + operator is invalid as it is configured for length object + int.

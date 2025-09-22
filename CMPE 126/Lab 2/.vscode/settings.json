@@ -1,3 +1,10 @@
 {
-    "C_Cpp.dimInactiveRegions": false
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "string_view": "cpp",
+        "iosfwd": "cpp",
+        "text_encoding": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
 }

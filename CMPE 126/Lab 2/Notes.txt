@@ -3,3 +3,16 @@ Task 1:
 2. [HP] There is no functional difference between lines 5 and 6. They both output length by overloading the << operator. Line 6 just prints 2 lengths instead of 1. No special implementation is needed.
 3. [HP] None of the above operations needed me to overlaod the assignment operator. I would only need to overload it when setting a class object to another value or object not part of that class.
 4. [HP] To output the length object I needed to overload the << operator. To output inches + h3, I would first need that << operator to be overloaded and define a + operator for an int + a length object. The current + operator is invalid as it is configured for length object + int.
+
+Task 2:
+1. [LP] I only needed one constructor for the member class. I only needed a constructor with an ID input.
+2. [HP] I didn't need to overload the assignment operator in the length class because the set height function just makes use of the setFeet and setInches functions in the length class.
+3. [HP] Yes I needed some input validation for lines 3,4, and 7 since if the user puts an inches value above 11 then I need to convert it to feet in order to keep the values standard.
+
+Task 3:
+1. [LP] I needed 3 constructors for hours and minutes, an hour only, and a default constructor. one constructor isn't enough since there are several different input cases.
+2. [HP] There is no functional difference between line 5 and line 6. both need the << operator overloaded but the second one just prints 2 objects instead of one.
+
+Task 4:
+1. [HP] I only needed 1 constructor for this, the default constructor. since it's a brand new log, there isn't much starting information you can put.
+2. [HP] No I didn't need to overload the assignment operator for line 4 since I am assigning one time object to another. However I needed to overload the addition operator to add a integer to a time object.

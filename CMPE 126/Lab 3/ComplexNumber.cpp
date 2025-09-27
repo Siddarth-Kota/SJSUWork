@@ -26,7 +26,7 @@ void ComplexNumber::print() {
         cout << real;
     }
     if(im < 0) {
-        cout << " + -";
+        cout << " - ";
     }
     else if(im > 0) {
         cout << " + ";
@@ -58,7 +58,10 @@ ComplexNumber operator*(const ComplexNumber &num1, const ComplexNumber &num2) {
 ostream& operator<<(ostream& out, const ComplexNumber &num) {
     if((num.real != 0) || (num.im == 0 && num.real == 0)) {out << num.real;}
     if(num.im < 0) {out << num.im << "i";}
-    else if(num.im > 0) {out << "+" << num.im << "i";}
+    else if(num.im > 0) {
+        if (num.real != 0) {out << "+";}
+        out << num.im << "i";
+    }
     //out << endl;
     return out;
 }

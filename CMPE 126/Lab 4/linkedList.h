@@ -6,19 +6,22 @@
 
 using namespace std;
 
-template <typename T> class LinkedList {
+template <class T> class LinkedList {
 private:
-    int size;
-    int maxSize;
-    Node* head;
     struct Node {
         T data;
         Node* next;
         Node(T val) : data(val), next(nullptr) {}
     };
+    int size;
+    int maxSize;
+    Node* head;
 public:
-    LinkedList() : size(0), maxSize(100), head(nullptr) {}
     LinkedList(int maxSize) : size(0), maxSize(maxSize), head(nullptr) {}
+    LinkedList(int maxSize, T item) : size(1), maxSize(maxSize) {
+        head = new Node(item);
+        head->next = nullptr;
+    }
     ~LinkedList() {
         Node* current = head;
         while (current) {
@@ -90,17 +93,16 @@ public:
     }
 
     void removeAt(int index) {
-        if(index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw out_of_range("index is out of range");
         }
         Node* toDelete;
-        if(index == 0) {
+        if (index == 0) {
             toDelete = head;
             head = head->next;
-        }
-        else {
+        } else {
             Node* current = head;
-            for(int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 current = current->next;
             }
             toDelete = current->next;
@@ -111,35 +113,25 @@ public:
     }
 
     T retreiveAt(int index) const {
-        if(index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw out_of_range("index is out of range");
         }
         Node* current = head;
-        for(int i = 0; i < index - 1; i++) {
+        for (int i = 0; i < index; i++) {
             current = current->next;
         }
         return current->data;
     }
 
     void replaceAt(int index, T item) {
-        if(index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw out_of_range("index is out of range");
         }
-        Node* newNode = new Node(item);
-        if(index == 0) {
-            newNode->next = head->next;
-            delete head;
-            head = newNode;
+        Node* current = head;
+        for (int i = 0; i < index; i++) {
+            current = current->next;
         }
-        else {
-            Node* current = head;
-            for(int i = 0; i < index - 1; i++) {
-                current = current->next;
-            }
-            newNode->next = current->next->next;
-            delete current->next;
-            current->next = newNode;
-        }
+        current->data = item;
     }
 
     void clearList() {

@@ -14,14 +14,14 @@ ComplexNumber::ComplexNumber(double r, double i) : real(r), im(i) {}
 
 void ComplexNumber::setReal(double r) {real = r;}
 void ComplexNumber::setIm(double i) {im = i;}
-double ComplexNumber::getReal() {return real;}
-double ComplexNumber::getIm() {return im;}
+double ComplexNumber::getReal() const {return real;}
+double ComplexNumber::getIm() const {return im;}
 
-double ComplexNumber::getModulus() {
+double ComplexNumber::getModulus() const {
     return sqrt((real * real) + (im * im));
 }
 
-void ComplexNumber::print() {
+void ComplexNumber::print() const {
     if(real != 0) {
         cout << real;
     }
@@ -55,8 +55,10 @@ ComplexNumber operator*(const ComplexNumber &num1, const ComplexNumber &num2) {
     return ComplexNumber(real,im);
 }
 
-bool operator<(ComplexNumber &num1, ComplexNumber &num2) {
-    return num1.getModulus() < num2.getModulus();
+bool operator<(const ComplexNumber& lhs, const ComplexNumber& rhs) {
+    if (lhs.getReal() == rhs.getReal())
+        return lhs.getIm() < rhs.getIm();
+    return lhs.getReal() < rhs.getReal();
 }
 
 ostream& operator<<(ostream& out, const ComplexNumber &num) {

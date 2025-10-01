@@ -27,9 +27,26 @@ module tb2_1;
     mux2_1 dut(.A(A), .B(B), .sel(sel), .out(out));
     
     integer i;
-    initial begin
-    
-        //Add test stuff
+    initial begin  
+        //Sel 0 cases -> should follow B  
+        A = 0; B = 0; sel = 0; 
+        #10;
+        A = 0; B = 1; sel = 0;
+        #10;
+        A = 1; B = 0; sel = 0;
+        #10;
+        A = 1; B = 1; sel = 0;
+        #10;
+        
+        //Sel 1 cases -> should follow A
+        A = 0; B = 0; sel = 1; 
+        #10;
+        A = 0; B = 1; sel = 1;
+        #10;
+        A = 1; B = 0; sel = 1;
+        #10;
+        A = 1; B = 1; sel = 1;
+        #10;
         
         $display("sel A B | out");
         for (i = 0; i < 8; i = i + 1) begin

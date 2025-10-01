@@ -74,8 +74,8 @@ int main() {
     sortedList3.print();
 */
 
-    //Testing Code using ComplexNumber
-        //Part 1: Testing LinkedList
+//Testing Code using ComplexNumber
+    //Part 1: Testing LinkedList with ComplexNumber
     LinkedList<ComplexNumber> list(5);
     cout << "List created. Is empty: " << list.isEmpty() << ", Is full: " << list.isFull() << endl;
 
@@ -89,10 +89,10 @@ int main() {
     cout << "Item at index 1: " << list.retreiveAt(1) << endl;
 
     list.replaceAt(1, ComplexNumber(25, -2));
-    cout << "After replacing item at index 1 with 25:" << endl;
+    cout << "After replacing item at index 1 with 25-2i:" << endl;
     list.print();
 
-    cout << "Is item at index 1 equal to 25? " << (list.isItemAtEqual(1, ComplexNumber(25, -2)) ? "Yes" : "No") << endl;
+    cout << "Is item at index 1 equal to 25-2i? " << (list.isItemAtEqual(1, ComplexNumber(25, -2)) ? "Yes" : "No") << endl;
 
     list.removeAt(0);
     cout << "After removing item at index 0:" << endl;
@@ -110,7 +110,7 @@ int main() {
     list2.print();
     list.insertEnd(ComplexNumber(25, -2));
 
-    //Part 2: Testing SortedLinkedList
+    //Part 2: Testing SortedLinkedList with ComplexNumber
     SortedLinkedList<ComplexNumber> sortedList(5);
     cout << "\nSorted List created. Is empty: " << sortedList.isEmpty() << ", Is full: " << sortedList.isFull() << endl;
     sortedList.insert(ComplexNumber(50, 2));
@@ -120,10 +120,10 @@ int main() {
     sortedList.insert(ComplexNumber(10, -3));
     cout << "After inserting 4 items:" << endl;
     sortedList.print();
-    cout << "Is 20 in the list? " << (sortedList.isItemInList(ComplexNumber(20, 4)) ? "Yes" : "No") << endl;
-    cout << "Is 40 in the list? " << (sortedList.isItemInList(ComplexNumber(40, -3)) ? "Yes" : "No") << endl;
+    cout << "Is 20+4i in the list? " << (sortedList.isItemInList(ComplexNumber(20, 4)) ? "Yes" : "No") << endl;
+    cout << "Is 40-3i in the list? " << (sortedList.isItemInList(ComplexNumber(40, -3)) ? "Yes" : "No") << endl;
     sortedList.remove(ComplexNumber(20, 4));
-    cout << "After removing 20:" << endl;
+    cout << "After removing 20+4i:" << endl;
     sortedList.print();
     cout << "Current size: " << sortedList.listSize() << ", Max size: " << sortedList.maxListSize() << endl;
     SortedLinkedList<ComplexNumber> sortedList2 = sortedList;
@@ -134,9 +134,9 @@ int main() {
     sortedList2.print();
     cout << "Creating another sorted list from a regular linked list." << endl;
     SortedLinkedList<ComplexNumber> sortedList3(list);
-    cout << "Original regular list:" << endl;
+    cout << "Original regular list: ";
     list.print();
-    cout << "New sorted list created from the regular list:" << endl;
+    cout << "New sorted list created from the regular list: ";
     sortedList3.print();
 
     return 0;

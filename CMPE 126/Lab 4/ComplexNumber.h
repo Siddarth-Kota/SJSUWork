@@ -17,11 +17,11 @@ public:
     void setReal(double r);
     void setIm(double i);
 
-    double getReal();
-    double getIm();
+    double getReal() const;
+    double getIm() const;
 
-    double getModulus();
-    void print();
+    double getModulus() const;
+    void print() const;
 
     friend ComplexNumber operator-(const ComplexNumber &num);
     friend ComplexNumber operator+(const ComplexNumber &num1, const ComplexNumber &num2);

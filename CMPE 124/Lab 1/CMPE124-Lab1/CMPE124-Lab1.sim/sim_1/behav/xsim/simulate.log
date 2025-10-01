@@ -1,0 +1,27 @@
+Time resolution is 1 ps
+s1 s2 A B C | out
+ 0  0 0 0 0 |  0
+ 0  0 0 0 1 |  0
+ 0  0 0 1 0 |  0
+ 0  0 0 1 1 |  0
+ 0  0 1 0 0 |  1
+ 0  0 1 0 1 |  1
+ 0  0 1 1 0 |  1
+ 0  0 1 1 1 |  1
+ 0  1 0 0 0 |  0
+ 0  1 0 0 1 |  0
+ 0  1 0 1 0 |  1
+ 0  1 0 1 1 |  1
+ 0  1 1 0 0 |  0
+ 0  1 1 0 1 |  0
+ 0  1 1 1 0 |  1
+ 0  1 1 1 1 |  1
+ 1  0 0 0 0 |  0
+ 1  0 0 0 1 |  1
+ 1  0 0 1 0 |  0
+ 1  0 0 1 1 |  1
+ 1  0 1 0 0 |  0
+ 1  0 1 0 1 |  1
+ 1  0 1 1 0 |  0
+ 1  0 1 1 1 |  1
+$finish called at time : 264 ns : File "C:/Users/kotas/Downloads/Sid Stuff/SJSUWork/CMPE 124/Lab 1/CMPE124-Lab1/CMPE124-Lab1.srcs/sim_1/new/tb3_1.v" Line 93

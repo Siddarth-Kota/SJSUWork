@@ -31,7 +31,7 @@ module mux2_1(
     
     not u_inv(nsel, sel);
     and u_and_a(a_term, sel, A);
-    and u_and_b(b_term, sel, B);
+    and u_and_b(b_term, nsel, B);
     or u_or(out, a_term, b_term);    
 endmodule
 

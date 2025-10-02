@@ -65,7 +65,7 @@ module tb3_1;
         A = 1; B = 1; C = 1; sel1 = 0; sel2 = 1;
         #10;
         
-        //Sel 2 cases (sel1 = 1, sel2 = 0) -> should follow C
+        //Sel 2 cases (sel1 = 1) -> should follow C
         A = 0; B = 0; C = 0; sel1 = 1; 
         #10;
         A = 0; B = 0; C = 1; sel1 = 1;

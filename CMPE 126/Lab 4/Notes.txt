@@ -1,0 +1,2 @@
+The operators that needed to be overloaded in the ComplexNumber class were the < operartor to compare for the sortedLinkedList class.
+The output operator also needed to be overloaded to print out the complex Number but that was already done beforehand.

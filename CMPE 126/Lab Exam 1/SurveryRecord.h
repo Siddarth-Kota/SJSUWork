@@ -27,9 +27,9 @@ class SurveryRecord {
 
 
         //Algorithms
-        SurveryRecord smallestArea(SurveryRecord arr[], int size);
-        SurveryRecord largestArea(SurveryRecord arr[], int size);
-        SurveryRecord averageArea(SurveryRecord arr[], int size);
+        static SurveryRecord smallestArea(SurveryRecord arr[], int size);
+        static SurveryRecord largestArea(SurveryRecord arr[], int size);
+        static SurveryRecord averageArea(SurveryRecord arr[], int size);
 };
 
 

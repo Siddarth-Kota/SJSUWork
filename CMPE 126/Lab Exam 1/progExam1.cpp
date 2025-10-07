@@ -76,12 +76,10 @@ int main() {
         }
     }
 
-
-
     cout << "\n   Smallest Area (from survery_assignment.txt): " << record.smallestArea(vals, size);
     cout << "   Largest Area (from survery_assignment.txt): " << record.largestArea(vals, size);
     cout << "   Average Area (from survery_assignment.txt): " << record.averageArea(vals, size);
-
+    
     file.close();
 
     return 0;

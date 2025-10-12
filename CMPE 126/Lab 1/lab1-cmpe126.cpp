@@ -18,6 +18,7 @@ int main() {
     cout << c2 << "" << c3;
     cout << c2 + c3;
     c1 = c1+realNum;
+    cout << "Enter a complex number in the form a+bi: ";
     cin >> c2;
     cout << c2*c3;
     c3 = c2-c1;

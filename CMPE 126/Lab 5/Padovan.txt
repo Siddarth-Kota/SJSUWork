@@ -1,0 +1,39 @@
+Task 1 Part 1
+
+Function Padovan(n):
+    // Base cases
+    // P(0) = P(1) = P(2) = 1
+    If n = 0 or n = 1 or n = 2:
+        Return 1
+    
+    // Recursive case
+    // P(n) = P(n-2) + P(n-3)
+    Return Padovan(n-2) + Padovan(n-3)
+End Function
+
+Task 1 Part 3
+
+In padovan with n = 7
+In padovan with n = 5
+In padovan with n = 3
+In padovan with n = 1
+Returning 1 with n = 1
+In padovan with n = 0
+Returning 1 with n = 0
+Returning 2 with n = 3
+In padovan with n = 2
+Returning 1 with n = 2
+Returning 3 with n = 5
+In padovan with n = 4
+In padovan with n = 2
+Returning 1 with n = 2
+In padovan with n = 1
+Returning 1 with n = 1
+Returning 2 with n = 4
+Returning 5 with n = 7
+
+Task 1 Part 4
+
+The recursive implementation has exponential time complexity O(3^n) due to redundant calculations. The same values are computed multiple times. For example, when calculating P(7), P(2) is calculated three times. 
+An iterative implementation would be more efficient as it could store previously calculated values and compute each number exactly once, resulting in linear O(n) time complexity and constant O(1) space complexity.
+Therefore, the iterative approach is more efficient especially for larger numbers

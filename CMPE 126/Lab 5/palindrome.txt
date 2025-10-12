@@ -1,0 +1,45 @@
+Task 2 Part 1
+
+Function isPalindrome(number, start, end):
+    // Base case 1: Single digit or empty number is a palindrome
+    If start >= end:
+        Return true
+    
+    // Get the first digit (leftmost) using division
+    firstDigit = (number / (10^end)) % 10
+    
+    // Get the last digit (rightmost) using modulo
+    lastDigit = (number / (10^start)) % 10
+    
+    // If first and last digits don't match, not a palindrome
+    If firstDigit != lastDigit:
+        Return false
+    
+    // Recursive case: check next pair of digits
+    // Move start one position right and end one position left
+    Return isPalindrome(number, start + 1, end - 1)
+End Function
+
+// Helper function to get the number of digits
+Function getLength(number):
+    If number == 0:
+        Return 1
+    count = 0
+    While number > 0:
+        count = count + 1
+        number = number / 10
+    Return count
+End Function
+
+// Main function to check palindrome
+Function checkPalindrome(number):
+    length = getLength(number)
+    Return isPalindrome(number, 0, length - 1)
+End Function
+
+Task 2 Part 3: Computational Complexity Analysis
+
+Time Complexity:
+1. getLength Function: O(log n)
+2. isPalindrome Function: O(log n)
+3. Overall Time Complexity: O(log n)

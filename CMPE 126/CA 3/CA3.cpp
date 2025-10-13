@@ -18,3 +18,8 @@ int main() {
     cout << "The binary equivalent of " << dec << " is " << decimalToBinary(dec) << endl;
 
 }
+
+/* Output:
+The fibonacci sequence of 4 is 3
+The binary equivalent of 5 is 101
+*/

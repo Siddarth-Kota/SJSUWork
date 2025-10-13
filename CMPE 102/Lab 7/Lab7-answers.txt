@@ -1,0 +1,27 @@
+1.
+
+main:
+call puts --> -354
+call foo --> -63
+call bar --> 13
+
+foo:
+call puts --> -318
+
+bar:
+call puts --> -399
+
+
+2.
+
+je do_mov --> object code: 74 1a --> relative offset: +26
+
+je do_add --> object code: 74 3d --> relative offset: +61
+
+je do_mul --> object code: 74 6b --> relative offset: +107
+
+
+jmp main --> object code: e9 79 ff ff ff --> relative offset: -135
+
+after removing lines: jmp main --> object code: eb 88 --> relative offset: -120
+Because x86 has two different encodings for unconditional jump, one between -128 and -127 (near jump) and one for outside of those bounds called a short jump. Because removing the 2 instructions moved it 15 bytes closer, it falls within the range of a near jump, thus using 1 code for the relative offset instead of 4.

@@ -1,0 +1,20 @@
+1. For which problem did you do the base case, and for which ones did you do the recursive formulation?
+
+ - I did the base case for the Fibonacci sequence and the recursive algorithm for the decimal to Binary function.
+
+2. Which of these seems easier to figure out?
+
+ - The Fibonacci sequence was easier to figure out because it has a clear base case, and the recursive relationship is straightforward. 
+   The decimal to binary conversion was a bit more complex as it required understanding how to break down the number into smaller parts.
+
+3. Did you try to code any of these problems? If so, was it easier to do the code after solving the problem on paper?
+
+ - Yes, I tried to code both problems. For the Fibonacci sequence, it wasn't too difficult to code directly, 
+   But for the decimal to binary problem, solving the recursive formulation first made it much 
+   easier to implement the code.
+
+4. If you figured out a trick based on your discussions, please mention it here.
+
+ - A useful trick I found was the formula for the decimal to binary conversion: return n % 2 + 10 * decimalToBinary(n / 2);
+   This was helpful because it shows how it builds the decimal using the mod function to build the binary number from the least 
+   significant bit to the most significant bit.

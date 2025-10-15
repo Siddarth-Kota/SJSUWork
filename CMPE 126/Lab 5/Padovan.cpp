@@ -16,9 +16,4 @@ unsigned int padovan(const unsigned int &n) {
     unsigned int result = padovan(n-2) + padovan(n-3);
     cout << "Returning " << result << " with n = " << n << endl;
     return result;
-}
-
-int main() {
-    padovan(7);
-    return 0;
-}
+};

@@ -1,0 +1,40 @@
+From the disassembled code, determine the 4 indirect addressing notations for variables w,x,y,z.
+   For instance, w is -0x10(%ebp).  What are the indirect addressing notions for x,y,z?
+
+x --> -0x0c(%ebp)
+
+y --> -0x08(%ebp)
+
+z --> -0x04(%ebp)
+
+How many bytes are allocated for the 4 local variables?   Look at the subl value from esp.
+
+--> 16 bytes reserved for the 4 local variables
+
+What is the top item on the stack at this point (call foo)? 
+
+--> The top item of the stack is the first argument x
+
+Is it a parameter, variable, return address, base register address?
+
+--> Type is parameter
+
+What is the top item on the stack at this point?
+
+--> The top item of the stack is the return address
+
+Is it a parameter, variable, return address, base register address?
+
+--> Type is return address
+
+What is the top item on the stack at this point?
+
+--> The old saved %epb which is the callers frame pointer
+
+Is it a parameter, variable, return address, base register address?
+
+--> Type is base register address
+
+How many bytes have been allocated for local variables in function foo?
+
+--> 16 bytes have been allocated

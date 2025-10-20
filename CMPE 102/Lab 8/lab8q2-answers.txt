@@ -1,0 +1,13 @@
+How will the new assembly instructions look like for the above 2 lines?
+
+--> movl  0x8(%ebp), -0x8(%ebp)   // c = a
+--> movl  0xC(%ebp), -0x4(%ebp)   // d = b
+
+What are the offsets of parameters a and b?
+
+--> a = +0x8(%ebp)
+--> b = +0xC(%ebp)
+
+What causes the sign of the offset to be positive or negative?
+
+--> parameters are at positive offsets while locals are at negative offsets

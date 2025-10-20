@@ -25,59 +25,60 @@ module tb2;
   reg  [3:0] a, b;
   reg        cin;
   wire [3:0] sum;
-  wire       cout;
+  wire       carry;
 
-  // Keep your DUT name/ports
-  rca4bit dut (.a(a), .b(b), .cin(cin), .sum(sum), .cout(cout));
-
-  // Loop counters and bookkeeping
-  integer i, j;
-  integer total = 0, mism = 0;
-  reg [4:0] exp5; // {expected_cout, expected_sum}
-
-  // Optional waves
-  initial begin
-    $dumpfile("rca4.vcd");
-    $dumpvars(0, tb2);
-  end
-
-  initial begin
+  rca4bit dut (.a(a), .b(b), .cin(cin), .sum(sum), .carry(carry));
+ 
+integer i, j;
+integer total  = 0;
+integer errors = 0;
+reg [4:0] expected;
+initial begin
+    a   = 4'b0000;
+    b   = 4'b0000;
     cin = 1'b0;
+    
+    $display("\n=== B=0000, Cin=0, A=0000..1111 (16 cases) ===");
 
-    // ---- Part 1: B=0000, A=0000..1111 ----
-    b = 4'b0000;
     for (i = 0; i < 16; i = i + 1) begin
       a = i[3:0];
-      #1; // settle
-      exp5 = a + b + cin;
-      total = total + 1;
-      if ({cout, sum} !== exp5) begin
-        mism = mism + 1;
-        $display("FAIL P1  A=%b B=%b Cin=%b  -> got {C,S}=%b%b  exp=%b",
-                 a,b,cin,cout,sum,exp5);
+      #1;
+
+      expected = a + b + cin;
+      total    = total + 1;
+
+      if (sum !== expected[3:0] || carry !== expected[4]) begin
+        errors = errors + 1;
+        $display("A=%b B=%b Cin=%b -> DUT{%b,%b}  EXP{%b,%b}  **FAIL**",
+                 a, b, cin, carry, sum, expected[4], expected[3:0]);
+      end else begin
+        $display("A=%b B=%b Cin=%b -> DUT{%b,%b}  EXP{%b,%b}  PASS",
+                 a, b, cin, carry, sum, expected[4], expected[3:0]);
       end
-      #9; // complete 10ns step per vector
     end
 
-    // ---- Part 2: For B=0001..1111, A=0000..1111 ----
+    $display("\n=== Cin=0, For each B=0001..1111, A=0000..1111 (240 cases) ===");
+    cin = 1'b0;
+
     for (j = 1; j < 16; j = j + 1) begin
       b = j[3:0];
       for (i = 0; i < 16; i = i + 1) begin
         a = i[3:0];
-        #1; // settle
-        exp5 = a + b + cin;
-        total = total + 1;
-        if ({cout, sum} !== exp5) begin
-          mism = mism + 1;
-          $display("FAIL P2  A=%b B=%b Cin=%b  -> got {C,S}=%b%b  exp=%b",
-                   a,b,cin,cout,sum,exp5);
+        #1;
+
+        expected = a + b + cin;
+        total    = total + 1;
+
+        if (sum !== expected[3:0] || carry !== expected[4]) begin
+          errors = errors + 1;
+          $display("A=%b B=%b Cin=%b -> DUT{%b,%b}  EXP{%b,%b}  **FAIL**",
+                   a, b, cin, carry, sum, expected[4], expected[3:0]);
+        end else begin
+          $display("A=%b B=%b Cin=%b -> DUT{%b,%b}  EXP{%b,%b}  PASS",
+                   a, b, cin, carry, sum, expected[4], expected[3:0]);
         end
-        #9;
       end
     end
-
-    $display("\nRCA4 test complete: %0d cases, mismatches=%0d -> %s",
-             total, mism, (mism==0) ? "PASS" : "FAIL");
-    $finish;
-  end
+$finish();
+end
 endmodule

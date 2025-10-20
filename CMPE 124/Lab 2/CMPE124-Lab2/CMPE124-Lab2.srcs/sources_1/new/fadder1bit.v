@@ -29,7 +29,6 @@ module fadder1bit(
     wire notA, notB;
     wire anotb,abnot;
     wire abterm;
-    
     wire notabterm, notcin;
     wire x1, x2;
     

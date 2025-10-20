@@ -1,0 +1,15 @@
+What is the instruction for m[0] = 'A';
+
+--> movb $65, -72(%ebp)
+
+If we add an instruction: m[0]=n[0], What will be the instructions?
+
+
+--> movzbl -52(%ebp), %eax
+--> mov    %al,      -72(%ebp)
+
+
+If we add another instruction: m[10]=n[5], What will be the instructions?
+
+--> movzbl  -47(%ebp), %eax
+--> movb    %al, -62(%ebp)

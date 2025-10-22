@@ -40,18 +40,14 @@ module fadder1bit_delay #(
 
     not #(TINV)  u_notA  (notA, a);
     and #(TAND2) u_anotb (anotb, notA, b);    
-
     not #(TINV)  u_notB  (notB, b);
     and #(TAND2) u_abnot (abnot, a, notB);
-
     or  #(TOR2)  u_ab    (abterm, anotb, abnot);
 
     not #(TINV)  u_notab (notabterm, abterm);
     and #(TAND2) u_x1    (x1, notabterm, cin);
-
     not #(TINV)  u_notcin(notcin, cin);
     and #(TAND2) u_x2    (x2, notcin, abterm);
-
     or  #(TOR2)  u_sum   (sum, x1, x2);
 
     and #(TAND2) u_w1 (w1, a, b);

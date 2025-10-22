@@ -1,5 +1,5 @@
 #include "EntryLog.h"
-#include "time.h"
+#include "Time.h"
 #include "member.h"
 #include <iostream>
 

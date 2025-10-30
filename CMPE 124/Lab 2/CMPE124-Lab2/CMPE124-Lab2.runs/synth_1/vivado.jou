@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Wed Oct 29 15:15:02 2025
+# Process ID         : 30664
+# Current directory  : C:/Users/kotas/Downloads/Sid Stuff/SJSUWork/CMPE 124/Lab 2/CMPE124-Lab2/CMPE124-Lab2.runs/synth_1
+# Command line       : vivado.exe -log fadder1bit.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fadder1bit.tcl
+# Log file           : C:/Users/kotas/Downloads/Sid Stuff/SJSUWork/CMPE 124/Lab 2/CMPE124-Lab2/CMPE124-Lab2.runs/synth_1/fadder1bit.vds
+# Journal file       : C:/Users/kotas/Downloads/Sid Stuff/SJSUWork/CMPE 124/Lab 2/CMPE124-Lab2/CMPE124-Lab2.runs/synth_1\vivado.jou
+# Running On         : LAPTOP-0UO1RKK4
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+# CPU Frequency      : 2803 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16930 MB
+# Swap memory        : 1543 MB
+# Total Virtual      : 18473 MB
+# Available Virtual  : 3728 MB
+#-----------------------------------------------------------
+source fadder1bit.tcl -notrace

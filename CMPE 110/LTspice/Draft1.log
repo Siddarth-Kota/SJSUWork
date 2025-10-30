@@ -1,0 +1,15 @@
+LTspice 24.1.10 for Windows
+Circuit: C:\Users\kotas\OneDrive\Documents\LTspice\Draft1.net
+Start Time: Mon Oct 20 22:05:18 2025
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration for .op point succeeded.
+Total elapsed time: 0.091 seconds.
+
+Files loaded:
+C:\Users\kotas\OneDrive\Documents\LTspice\Draft1.net
+C:\Users\kotas\AppData\Local\LTspice\lib\sub\LTC.lib
+

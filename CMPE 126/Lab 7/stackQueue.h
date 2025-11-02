@@ -10,15 +10,16 @@ template <typename T> class stackQueue {
     private:
         stack<T> stack1;
         stack<T> stack2;
-        int capacity; // -1 for unbounded
+        int capacity;
 
     public:
 
-    stackQueue(int maxSize = -1) : capacity(maxSize) {}
+    stackQueue(int maxSize) : capacity(maxSize) {}
+    stackQueue() : capacity(100) {} //default capacity 100
     ~stackQueue() {}
 
         void enqueue(const T& element) {
-            if (capacity >= 0 && size() >= capacity) {
+            if (isFull()) {
                 throw "Queue is full";
             }
             stack1.push(element);

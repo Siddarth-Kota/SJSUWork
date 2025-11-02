@@ -1,25 +1,60 @@
-#ifndef ARRAY_QUEUE_H
-#define ARRAY_QUEUE_H
+#ifndef ARRAYQUEUE_H
+#define ARRAYQUEUE_H
 
 #include <stdexcept>
-#include <cstddef>
 
-template <typename T>
-class ArrayQueue {
-public:
-    ArrayQueue(std::size_t capacity);
-    ~ArrayQueue();
+using namespace std;
 
-    void enqueue(const T& item);
-    T dequeue();
-    bool isEmpty() const;
-    bool isFull() const;
+template <typename T> class arrayQueue {
+    private:
+        T* array;
+        int capacity;
+        int frontIndex = 0;
+        int rearIndex = 0;
 
-private:
-    T* data;
-    std::size_t front;
-    std::size_t rear;
-    std::size_t maxSize;
+    public:
+        arrayQueue() : capacity(100) {
+            array = new T[capacity];
+        }
+
+        arrayQueue(int cap) : capacity(cap) {
+            array = new T[capacity];
+        }
+
+        ~arrayQueue() {
+            delete[] array;
+        }
+
+
+        void enqueue(const T& element) {
+            if (isFull()) {
+                throw "Queue is full";
+            }
+            array[rearIndex] = element;
+            rearIndex = (rearIndex + 1) % capacity;
+        }
+
+        T dequeue() {
+            if (isEmpty()) {
+                throw "Queue is empty";
+            }
+            T frontElement = array[frontIndex];
+            frontIndex = (frontIndex + 1) % capacity;
+            return frontElement;
+        }
+
+        T front() {
+            if(isEmpty()) {
+                throw "Queue is empty";
+            }
+            return array[frontIndex];
+        }
+
+        int size() const {return (capacity - frontIndex + rearIndex) % capacity;}
+        int maxSize() const {return capacity;}
+        
+        bool isEmpty() const {return frontIndex == rearIndex;}
+        bool isFull() const {return size() == capacity;}
 };
 
-#endif // ARRAY_QUEUE_H
+#endif // ARRAYQUEUE_H

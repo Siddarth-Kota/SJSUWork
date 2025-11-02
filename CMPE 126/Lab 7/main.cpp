@@ -6,8 +6,10 @@
 //============================================================================
 
 #include <iostream>
+
 #include "arrayQueue.h"
 #include "stackQueue.h"
+
 using namespace std;
 
 int main() {
@@ -20,8 +22,13 @@ int main() {
 		cout << charQueue1.dequeue() << endl;
 		charQueue1.enqueue('D');
 		cout << charQueue1.dequeue() << endl;
+		cout << "size: " << charQueue1.size() << endl;
 		cout << charQueue1.dequeue() << endl;
+		cout << "maxSize: " << charQueue1.maxSize() << endl;
+		cout << "isEmpty: " << (charQueue1.isEmpty() ? "true" : "false") << endl;
+		cout << "isFull: " << (charQueue1.isFull() ? "true" : "false") << endl;
 		cout << charQueue1.dequeue() << endl;
+
 	}
 	catch(const char *e) {
 		cout << e << endl;
@@ -36,7 +43,11 @@ int main() {
 		cout << charQueue2.dequeue() << endl;
 		charQueue2.enqueue('D');
 		cout << charQueue2.dequeue() << endl;
+		cout << "size: " << charQueue2.size() << endl;
 		cout << charQueue2.dequeue() << endl;
+		cout << "maxSize: " << charQueue2.maxSize() << endl;
+		cout << "isEmpty: " << (charQueue2.isEmpty() ? "true" : "false") << endl;
+		cout << "isFull: " << (charQueue2.isFull() ? "true" : "false") << endl;
 		cout << charQueue2.dequeue() << endl;
 	}
 	catch(const char *e) {

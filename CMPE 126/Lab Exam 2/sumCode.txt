@@ -1,0 +1,13 @@
+int sumCode(const string input) {
+	if(string is empty) {
+		return base value
+	}
+	char inputchar = first character
+	if (input is between A and Z) {
+		int val = (inputchar - 'A');
+		return val + sumCode(string with 1st char gone);
+	} else {
+		cout << "Error: Invalid Input" << endl;
+		return -1;
+	}
+}

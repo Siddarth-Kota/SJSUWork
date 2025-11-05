@@ -1,0 +1,1 @@
+In order to implement Undo and Redo I just had it push to the redo stack after doing an Undo function.

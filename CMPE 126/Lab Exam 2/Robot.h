@@ -4,6 +4,8 @@
 
 #include <string>
 #include <stack>
+#include <vector>
+#include <utility>
 
 using namespace std;
 
@@ -15,6 +17,9 @@ private:
 	stack<string> redoStack;
 	string AllOps[100];
 	int opCount;
+	static bool blocked[6][6];
+	vector<std::pair<int,int>> branchStack;
+	static stack<string> moves;
 
 public:
 	Robot();
@@ -29,6 +34,13 @@ public:
 
 	int getX();
 	int getY();
+
+	static bool isBlocked(int, int);
+	void markBranchBlocked();
+	void clearBranchStack();
+
+	void addMove(string move);
+	void doMoves();
 
 	virtual ~Robot();
 };

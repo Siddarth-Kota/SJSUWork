@@ -8,10 +8,6 @@
 
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <algorithm>
-#include <utility>
-#include <functional>
 
 #include "Robot.h"
 #include "Robot.cpp"
@@ -34,110 +30,134 @@ bool maze_floors[6][5] = { //needs to be considered in reverse order for y-axis
 };
 
 /* Maze layout:
+
 walls: vertical lines
 floors: horizontal lines
 
- • - • - • - • - • - • 
- |                   |
- • - • - • - • - •   •
- |               |   |
- • - •   • - • - •   •
- |   |       |       |
- •   •   • - • - •   •
- |                   |
- •   • - •   • - •   •
- |	     |   |       |
- • - • - • - • - • - •
-
+ 	0   1   2   3   4   5 (walls)
+ 	• - • - • - • - • - • 0
+ 4	|                   |
+ 	• - • - • - • - •   • 1
+ 3	|               |   |
+ 	• - •   • - • - •   • 2
+ 2	|   |       |       |
+ 	•   •   • - • - •   • 3
+ 1	|                   |
+ 	•   • - •   • - •   • 4
+ 0  |	    |   |       |
+ 	• - • - • - • - • - • 5
+	  0	  1	  2   3   4	  (floor)
 */
 
-void navigateMaze(Robot &r, int targetx, int targety) {
-	const int W = 6;
-	const int H = 6;
+bool navigateMaze(Robot &r, int targetx, int targety, int recursionDepth = 0) {
+    const int W = 6;
+    const int H = 6;
 
-	if (r.getX() < 0 || r.getX() >= W || r.getY() < 0 || r.getY() >= H) throw "Robot start out of bounds.";
-	if (targetx < 0 || targetx >= W || targety < 0 || targety >= H) throw "Target out of bounds.";
+    // Check bounds
+    if (r.getX() < 0 || r.getX() >= W || r.getY() < 0 || r.getY() >= H) throw "Robot start out of bounds.";
+    if (targetx < 0 || targetx >= W || targety < 0 || targety >= H) throw "Target out of bounds.";
 
-	bool visited[H][W] = {false};
-	pair<int,int> prev[H][W];
-	for (int iy = 0; iy < H; ++iy) for (int ix = 0; ix < W; ++ix) prev[iy][ix] = {-1,-1};
+    // Base case: if we reached the target
+    if (r.getX() == targetx && r.getY() == targety) {
+        return true;
+    }
 
-	queue<pair<int,int>> q;
-	q.push({r.getX(), r.getY()});
-	visited[r.getY()][r.getX()] = true;
-	bool found = false;
+    int x = r.getX();
+    int y = r.getY();
 
-	while (!q.empty()) {
-		pair<int,int> cur = q.front(); 
-		q.pop();
-		int x = cur.first, y = cur.second;
-		if (x == targetx && y == targety) { found = true; break; }
+	bool upWall =  maze_floors[H - 1 - (y + 1)][x]; 
+	bool upBlocked = r.isBlocked(x, y + 1);
+	bool downWall = maze_floors[H - 1 - y][x]; 
+	bool downBlocked = r.isBlocked(x, y - 1);
+	bool rightWall = maze_walls[H - 1 - (y + 1)][x + 1]; 
+	bool rightBlocked = r.isBlocked(x + 1, y);
+	bool leftWall = maze_walls[H - 1 - (y + 1)][x]; 
+	bool leftBlocked = r.isBlocked(x - 1, y);
 
-		// Up
-		if (y + 1 < H && !visited[y+1][x]) {
-			if (maze_walls[y][x] == 0) {
-				visited[y+1][x] = true;
-				prev[y+1][x] = {x,y};
-				q.push({x, y+1});
-			}
+	//cout << "\nCurrent Position: (" << x << ", " << y << ")" << endl;
+	//cout << "Up Block: " << upWall << " " << upBlocked << endl;
+	//cout << "Down Block: " << downWall << " " << downBlocked << endl;
+	//cout << "Right Block: " << rightWall << " " << rightBlocked << endl;
+	//cout << "Left Block: " << leftWall << " " << leftBlocked << endl << endl;
+
+	int countObs = (upWall || upBlocked) + (downWall || downBlocked) + (rightWall || rightBlocked) + (leftWall || leftBlocked);
+	if (countObs == 3) {
+		//cout << "Dead end at (" << x << ", " << y << ")\n";
+		r.markBranchBlocked();
+		return false;
+	}
+
+    // Up check
+    if (y + 1 < H && !upWall && !upBlocked) {
+		//cout << "Recursion Depth: " << recursionDepth << endl;
+		//cout << "Trying up move..." << endl;
+		Robot rCopy = r;
+		rCopy.move('u');
+		if (navigateMaze(rCopy, targetx, targety, recursionDepth + 1)) {
+			//cout << "Up move successful." << endl;
+			//cout << "Moving up to (" << x << ", " << y + 1 << ")\n";
+			r.addMove("u");
+			return true;
 		}
-
-		// Down
-		if (y - 1 >= 0 && !visited[y-1][x]) {
-			if (maze_walls[y-1][x] == 0) {
-				visited[y-1][x] = true;
-				prev[y-1][x] = {x,y};
-				q.push({x, y-1});
-			}
-		}
-
-		// Right
-		if (x + 1 < W && !visited[y][x+1]) {
-			if (maze_floors[H - 1 - y][x] == 0) {
-				visited[y][x+1] = true;
-				prev[y][x+1] = {x,y};
-				q.push({x+1, y});
-			}
-		}
-
-		// Left
-		if (x - 1 >= 0 && !visited[y][x-1]) {
-			if (maze_floors[H - 1 - y][x-1] == 0) {
-				visited[y][x-1] = true;
-				prev[y][x-1] = {x,y};
-				q.push({x-1, y});
-			}
+		else {
+			//cout << "Up move failed." << endl;
+			r.markBranchBlocked();
 		}
 	}
 
-	if (!found) throw "No path found.";
+    // Right check
+	if (x + 1 < W && !rightWall && !rightBlocked) {
+		//cout << "Recursion Depth: " << recursionDepth << endl;
+		//cout << "Trying right move..." << endl;
+        Robot rCopy = r;
+        rCopy.move('r');
+        if (navigateMaze(rCopy, targetx, targety, recursionDepth + 1)) {
+			//cout << "Right move successful." << endl;
+			//cout << "Moving right to (" << x + 1 << ", " << y << ")\n";
+			r.addMove("r");
+            return true;
+        }
+		else {
+			//cout << "Right move failed." << endl;
+			r.markBranchBlocked();
+		}
+    }
 
-	// Reconstruct path and execute moves on the robot
-	vector<char> moves;
-	int cx = targetx, cy = targety;
-	int sx = r.getX();
-	int sy = r.getY();
-	while (!(cx == sx && cy == sy)) {
-		auto p = prev[cy][cx];
-		int px = p.first, py = p.second;
-		if (px == -1) break;
-		if (px == cx && py + 1 == cy) moves.push_back('u');
-		else if (px + 1 == cx && py == cy) moves.push_back('r');
-		else if (px == cx && py - 1 == cy) moves.push_back('d');
-		else if (px - 1 == cx && py == cy) moves.push_back('l');
-		else throw "Invalid path reconstruction.";
-		cx = px; cy = py;
-	}
-	reverse(moves.begin(), moves.end());
-
-	cout << "Found path of length " << moves.size() << ": ";
-	for (char c : moves) cout << c << ' ';
-	cout << endl;
-
-	for (char m : moves) {
-		r.move(m);
-		cout << "Moved " << m << ": " << r.getState() << endl;
-	}
+	// Down check
+    if (y - 1 >= 0 && !downWall && !downBlocked) {
+		//cout << "Recursion Depth: " << recursionDepth << endl;
+		//cout << "Trying down move..." << endl;
+        Robot rCopy = r;
+        rCopy.move('d');
+        if (navigateMaze(rCopy, targetx, targety, recursionDepth + 1)) {
+			//cout << "Down move successful." << endl;
+			//cout << "Moving down to (" << x << ", " << y - 1 << ")\n";
+			r.addMove("d");
+            return true;
+        }
+		else {
+			//cout << "Down move failed." << endl;
+			r.markBranchBlocked();
+		}
+    }
+    // Left check
+    if (x - 1 >= 0 && !leftWall && !leftBlocked) {
+		//cout << "Recursion Depth: " << recursionDepth << endl;
+		//cout << "Trying left move..." << endl;
+        Robot rCopy = r;
+        rCopy.move('l');
+        if (navigateMaze(rCopy, targetx, targety, recursionDepth + 1)) {
+			//cout << "Left move successful." << endl;
+			//cout << "Moving left to (" << x - 1 << ", " << y << ")\n";
+            r.addMove("l");
+            return true;
+        }
+		else {
+			//cout << "Left move failed." << endl;
+			r.markBranchBlocked();
+		}
+    }
+    return false;
 }
 
 int main() {
@@ -178,10 +198,14 @@ int main() {
 		cout << c << endl;
 	}
 
-	try{
-
+	try {
+		cout << "\nTesting Maze Navigation:" << endl;
 		Robot r2;
-		navigateMaze(r2, 2, 2);
+		bool success = navigateMaze(r2, 2, 2);
+		cout << "Maze navigation " << (success ? "succeeded." : "failed.") << endl;
+		r2.doMoves();
+		cout << "Target Position: (2, 2)" << endl;
+		cout << "Final Robot Position: " << r2.getState() << endl;
 	}
 	catch(const char* c){
 		cout << c << endl;

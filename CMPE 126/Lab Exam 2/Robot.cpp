@@ -1,9 +1,13 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 #include <stdexcept>
 #include "Robot.h"
 
 using namespace std;
+
+bool Robot::blocked[6][6] = { {false} };
+stack<string> Robot::moves;
 
 Robot::Robot() : Robot(0, 0) {}
 Robot::Robot(int x, int y) {
@@ -13,22 +17,31 @@ Robot::Robot(int x, int y) {
 }
 
 void Robot::move(char direction) {
+    int newX = x;
+    int newY = y;
     switch (direction) {
         case 'u':
-            y++;
+            newY++;
             break;
         case 'd':
-            y--;
+            newY--;
             break;
         case 'l':
-            x--;
+            newX--;
             break;
         case 'r':
-            x++;
+            newX++;
             break;
         default:
             cout << "Invalid direction!" << endl;
+            return;
     }
+    
+    x = newX;
+    y = newY;
+
+    branchStack.push_back({x, y});
+
     undoStack.push(string(1, direction));
     AllOps[opCount++] = string(1, direction);
 }
@@ -46,6 +59,7 @@ void Robot::undo(int steps) {
         undoStack.pop();
         redoStack.push(lastMove);
         AllOps[opCount++] = "undo " + lastMove;
+        
         char direction = lastMove[0];
         switch (direction) {
             case 'u':
@@ -63,6 +77,7 @@ void Robot::undo(int steps) {
             default:
                 throw "Invalid direction!";
         }
+        if (!branchStack.empty()) branchStack.pop_back();
     }
 }
 
@@ -80,6 +95,7 @@ void Robot::redo(int steps) {
         redoStack.pop();
         undoStack.push(lastRedo);
         AllOps[opCount++] = "redo " + lastRedo;
+        
         char direction = lastRedo[0];
         switch (direction) {
             case 'u':
@@ -97,6 +113,7 @@ void Robot::redo(int steps) {
             default:
                 throw "Invalid direction!";
         }
+        branchStack.push_back({x, y});
     }
 }
 
@@ -136,4 +153,41 @@ int Robot::getX() {
 
 int Robot::getY() {
     return y;
+}
+
+bool Robot::isBlocked(int x, int y) {
+    if (x < 0 || x >= 6 || y < 0 || y >= 6) {
+        return false;
+    }
+    return blocked[y][x];
+}
+
+void Robot::markBranchBlocked() {
+    for (auto &p : branchStack) {
+        int bx = p.first;
+        int by = p.second;
+        if (bx >= 0 && bx < 6 && by >= 0 && by < 6) blocked[by][bx] = true;
+    }
+    branchStack.clear();
+}
+
+void Robot::clearBranchStack() {
+    branchStack.clear();
+}
+
+void Robot::addMove(string move) {
+    moves.push(move);
+}
+
+void Robot::doMoves() {
+    cout << "Moves Needed: " << endl;
+    while (!moves.empty()) {
+        string move = moves.top();
+        cout << move << " ";
+        moves.pop();
+        if (move == "u" || move == "d" || move == "l" || move == "r") {
+            this->move(move[0]);
+        }
+    }
+    cout << endl;
 }

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11/11/2025 12:59:20 AM
+// Create Date: 11/11/2025 09:50:07 PM
 // Design Name: 
-// Module Name: dff_gate
+// Module Name: one_bit_reg
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module dff_gate(
+module one_bit_reg(
     input wire D,
+    input wire EN,
+    input wire RST,
     input wire CLK,
-    output wire Q,
-    output wire nQ
+    output wire Q
     );
-    wire nD, s, r;
-    not  (nD, D);
-    nand (s, D, CLK);
-    nand (r, nD, CLK);
-    nand (Q, s, nQ);
-    nand (nQ, r, Q);
+    
+    wire out_mux;
+    assign out_mux = EN ? D : Q;
+    dff_gate_behav uut(out_mux, RST, CLK, Q);
 endmodule

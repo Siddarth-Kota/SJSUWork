@@ -1,12 +1,10 @@
 Time resolution is 1 ps
-time=0, D=1, en=1, reset=1, clock=0, Q=x
-time=5000, D=1, en=1, reset=1, clock=1, Q=1
-time=10000, D=1, en=0, reset=1, clock=0, Q=1
-time=15000, D=1, en=0, reset=1, clock=1, Q=1
-time=20000, D=1, en=0, reset=0, clock=0, Q=0
-time=25000, D=1, en=0, reset=0, clock=1, Q=0
-time=30000, D=0, en=0, reset=1, clock=0, Q=0
-time=35000, D=0, en=0, reset=1, clock=1, Q=0
-time=40000, D=1, en=1, reset=1, clock=0, Q=0
-time=45000, D=1, en=1, reset=1, clock=1, Q=1
-$finish called at time : 50 ns : File "C:/Users/sidko/OneDrive/Desktop/Github/SJSUWork/CMPE 124/Lab 3/CMPE124-Lab3/CMPE124-Lab3.srcs/sim_1/new/tb4.v" Line 39
+time=0, D=0, reset=0, clock=0, Q=0
+time=5000, D=1, reset=0, clock=1, Q=0
+time=10000, D=1, reset=0, clock=0, Q=0
+time=15000, D=1, reset=1, clock=1, Q=1
+time=20000, D=0, reset=1, clock=0, Q=0
+time=25000, D=0, reset=1, clock=1, Q=0
+time=30000, D=0, reset=0, clock=0, Q=0
+time=35000, D=1, reset=0, clock=1, Q=0
+$finish called at time : 40 ns : File "C:/Users/sidko/Desktop/GitHub/SJSUWork/CMPE 124/Lab 3/CMPE124-Lab3/CMPE124-Lab3.srcs/sim_1/new/tb2.v" Line 40

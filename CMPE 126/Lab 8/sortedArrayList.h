@@ -27,7 +27,7 @@ template <class T> class sortedArrayList {
         int listSize() const {return size;}
         int maxListSize() const {return maxSize;}
 
-        void print() const {arrList.print();}
+        void print() {arrList.print();}
 
         void insert(const T& item) {
             if (isFull()) {

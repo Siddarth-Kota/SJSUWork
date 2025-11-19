@@ -16,6 +16,35 @@ using namespace std;
 int main() {
 	int choice = 0;
 	do {
+			arrayList<int> arr = arrayList<int>(10);
+			arr.insertEnd(5);
+			arr.insertEnd(15);
+			arr.insertEnd(10);
+			arr.insertEnd(10);
+			arr.insertEnd(25);
+			arr.insertEnd(20);
+			arr.insertEnd(30);
+			arr.insertEnd(35);
+			arr.insertEnd(10);
+			arr.insertEnd(40);
+			cout << "Normal Array: ";
+			arr.print();
+			
+			sortedArrayList<int> sortedArr = sortedArrayList<int>(10);
+			for(int i = 0; i < sortedArr.maxListSize(); i++) {
+				sortedArr.insert(i * 5);
+			}
+			cout << "Sorted Array: ";
+			sortedArr.print();
+			
+			linkedList<int> list = linkedList<int>(10);
+			for(int i = 0; i < 10; i++) {
+				list.insertEnd(i * 3);
+			}
+			cout << "Linked List: ";
+			list.print();
+			cout << endl;
+
 	        cout << "Choose your search type:" << endl;
 	        cout << "1. Arrays: Sequential Search without recursion" << endl;
 	        cout << "2. Arrays: Sequential Search with recursion" << endl;
@@ -28,25 +57,6 @@ int main() {
 
 	        cin >> choice;
 
-			arrayList<int> arr = arrayList<int>(10);
-			arr.insertEnd(5);
-			arr.insertEnd(15);
-			arr.insertEnd(10);
-			arr.insertEnd(10);
-			arr.insertEnd(25);
-			arr.insertEnd(20);
-			arr.insertEnd(30);
-			arr.insertEnd(35);
-			arr.insertEnd(10);
-			arr.insertEnd(40);
-			sortedArrayList<int> sortedArr = sortedArrayList<int>(10);
-			for(int i = 0; i < sortedArr.listSize(); i++) {
-				sortedArr.insert(i * 5);
-			}
-			linkedList<int> list = linkedList<int>(10);
-			for(int i = 0; i < 10; i++) {
-				list.insertEnd(i * 3);
-			}
 	        switch(choice) {
 				case 1: {
 						int element;

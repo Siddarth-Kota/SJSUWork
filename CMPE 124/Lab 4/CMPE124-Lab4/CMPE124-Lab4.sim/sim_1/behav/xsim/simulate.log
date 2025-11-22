@@ -45,4 +45,4 @@ Time resolution is 1 ps
               435000 |   1    1 | 0010
               445000 |   1    1 | 0011
               455000 |   1    1 | 0100
-$finish called at time : 455 ns : File "C:/Users/sidko/OneDrive/Desktop/Github/SJSUWork/CMPE 124/Lab 4/CMPE124-Lab4/CMPE124-Lab4.srcs/sim_1/new/tb1.v" Line 60
+$finish called at time : 455 ns : File "C:/Users/sidko/Desktop/GitHub/SJSUWork/CMPE 124/Lab 4/CMPE124-Lab4/CMPE124-Lab4.srcs/sim_1/new/tb1.v" Line 60

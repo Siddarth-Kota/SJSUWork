@@ -63,5 +63,18 @@ public:
         if (table[index]->seqSearchIter(element)) return index;
         return -1;
     }
+
+    bool remove(const int& element) {
+        int index = element % HTsize;
+        if (index < 0) index += HTsize;
+        if (table[index] == nullptr) return false;
+        for (int i = 0; i < table[index]->listSize(); i++) {
+            if (table[index]->retreiveAt(i) == element) {
+                table[index]->removeAt(i);
+                return true;
+            }
+        }
+        return false;
+    }
 };
 #endif // HASHTABLECHAINING_H

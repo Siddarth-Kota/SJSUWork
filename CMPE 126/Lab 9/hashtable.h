@@ -27,7 +27,12 @@ public:
     
     void print() const {
         for (int i = 0; i < HTsize; i++) {
-            cout << "Index " << i << ": " << array[i] << endl;
+            if(array[i] != NULL) {
+                cout << "Index " << i << ": " << array[i] << endl;
+            } 
+            else {
+                cout << "Index " << i << ": " << "Index Not Filled" << endl;
+            }
         }
     }
 
@@ -45,6 +50,17 @@ public:
     int search(const int& element) const {
         int index = element % HTsize;
         return (array[index] == element) ? index : -1;
+    }
+
+    bool remove(const int& element) {
+        int index = element % HTsize;
+        if (array[index] == element) {
+            array[index] = NULL;
+            return true;
+        } 
+        else {
+            return false;
+        }
     }
 };
 

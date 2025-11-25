@@ -12,12 +12,14 @@
 #include "linkedList.h"
 #include "hashtable.h"
 #include "hashtablechaining.h"
+#include "hashtablequad.h"
 
 using namespace std;
 
 int main() {
 	int choice = 0;
 	do {
+			cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
 			arrayList<int> arr = arrayList<int>(10);
 			arr.insertEnd(5);
 			arr.insertEnd(15);
@@ -49,6 +51,19 @@ int main() {
 			list.print();
 			cout << endl << endl;
 
+			Hashtable hashTable = Hashtable(10);
+			for (int i = 0; i < 10; i++)
+			{
+				hashTable.insert(i * 7);
+			}
+			cout << "Hash Table with Linear probing: " << endl;
+			hashTable.print();
+			cout << endl;
+
+			//hashTable.remove(35);
+			//hashTable.print();
+			//cout << endl;
+
 			HashTableChaining hashTableChaining = HashTableChaining(10);
 			hashTableChaining.insert(15);
 			hashTableChaining.insert(25);
@@ -58,10 +73,32 @@ int main() {
 			hashTableChaining.insert(24);
 			hashTableChaining.insert(7);
 			hashTableChaining.insert(17);
+			
 			cout << "Hash Table with Chaining: " << endl;
 			hashTableChaining.print();
 			cout << endl;
 
+			//hashTableChaining.remove(25);
+			//hashTableChaining.print();
+			//cout << endl;
+
+			HashTableQuad hashTableQuad = HashTableQuad(10);
+			hashTableQuad.insert(15);
+			hashTableQuad.insert(25);
+			hashTableQuad.insert(32);
+			hashTableQuad.insert(5);
+			hashTableQuad.insert(12);
+			hashTableQuad.insert(24);
+			hashTableQuad.insert(7);
+			hashTableQuad.insert(17);
+
+			cout << "Hash Table with Quadratic Probing: " << endl;
+			hashTableQuad.print();
+			cout << endl;
+
+			//hashTableQuad.remove(25);
+			//hashTableQuad.print();
+			//cout << endl;
 
 	        cout << "Choose your search type:" << endl;
 	        cout << "1. Arrays: Sequential Search without recursion" << endl;
@@ -137,7 +174,7 @@ int main() {
 						int element;
 						cout << "Enter Element" << endl;
 						cin >> element;
-						int index = hashTableChaining.search(element);
+						int index = hashTable.search(element);
 						if(index != -1) {cout << "Element found in the hash table at index " << index << "." << endl;}
 						else {cout << "Element not found in the hash table." << endl;}
 						break;
@@ -155,6 +192,9 @@ int main() {
 						int element;
 						cout << "Enter Element" << endl;
 						cin >> element;
+						int index = hashTableQuad.search(element);
+						if(index != -1) {cout << "Element found in the hash table at index " << index << "." << endl;}
+						else {cout << "Element not found in the hash table." << endl;}
 						break;
 				}
 				default: {

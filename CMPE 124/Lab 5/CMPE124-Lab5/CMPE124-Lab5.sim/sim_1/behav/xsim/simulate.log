@@ -1,24 +1,10 @@
 Time resolution is 1 ps
-T=5000 ns | reset_n=0 stop=1 | count_out=x (0xx) out=x
-T=15000 ns | reset_n=1 stop=0 | count_out=0 (0x0) out=0
-T=25000 ns | reset_n=1 stop=0 | count_out=1 (0x1) out=0
-T=35000 ns | reset_n=1 stop=0 | count_out=2 (0x2) out=1
-T=45000 ns | reset_n=1 stop=0 | count_out=3 (0x3) out=0
-T=55000 ns | reset_n=1 stop=0 | count_out=4 (0x4) out=0
-T=65000 ns | reset_n=1 stop=0 | count_out=5 (0x5) out=0
-T=75000 ns | reset_n=1 stop=0 | count_out=6 (0x6) out=0
-T=85000 ns | reset_n=1 stop=0 | count_out=7 (0x7) out=0
-T=95000 ns | reset_n=1 stop=1 | count_out=0 (0x0) out=0
-T=105000 ns | reset_n=1 stop=1 | count_out=0 (0x0) out=0
-T=115000 ns | reset_n=1 stop=1 | count_out=0 (0x0) out=0
-T=125000 ns | reset_n=1 stop=1 | count_out=0 (0x0) out=0
-T=135000 ns | reset_n=1 stop=1 | count_out=0 (0x0) out=0
-T=145000 ns | reset_n=1 stop=0 | count_out=0 (0x0) out=0
-T=155000 ns | reset_n=1 stop=0 | count_out=1 (0x1) out=0
-T=165000 ns | reset_n=1 stop=0 | count_out=2 (0x2) out=1
-T=175000 ns | reset_n=1 stop=0 | count_out=3 (0x3) out=0
-T=185000 ns | reset_n=1 stop=0 | count_out=4 (0x4) out=0
-T=195000 ns | reset_n=1 stop=0 | count_out=5 (0x5) out=0
-T=205000 ns | reset_n=1 stop=0 | count_out=6 (0x6) out=0
-T=215000 ns | reset_n=1 stop=0 | count_out=7 (0x7) out=0
-$finish called at time : 225 ns : File "C:/Users/sidko/Desktop/GitHub/SJSUWork/CMPE 124/Lab 5/CMPE124-Lab5/CMPE124-Lab5.srcs/sim_1/new/tb2.v" Line 58
+T=5000 ns | reset_n=1 in=1 | out=x
+T=15000 ns | reset_n=1 in=1 | out=1
+T=25000 ns | reset_n=1 in=1 | out=2
+T=35000 ns | reset_n=1 in=1 | out=3
+T=45000 ns | reset_n=1 in=0 | out=4
+T=55000 ns | reset_n=1 in=0 | out=2
+T=65000 ns | reset_n=1 in=0 | out=2
+T=75000 ns | reset_n=1 in=0 | out=2
+$finish called at time : 85 ns : File "C:/Users/sidko/OneDrive/Desktop/Github/SJSUWork/CMPE 124/Lab 5/CMPE124-Lab5/CMPE124-Lab5.srcs/sim_1/new/tb1.v" Line 53

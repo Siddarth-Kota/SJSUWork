@@ -1,0 +1,20 @@
+1. What was fundamentally different about the three sorting algorithms?
+- How it works:
+	- Insertion Sort: builds a sorted array by inserting an item in its correct spot one item at a time.
+	- Merge Sort: recursively split the array in halves, sort each half, then merge.
+	- Quick Sort: using a randomly chosen pivot and recursively sort sections to the left and right of the pivot.
+- Time complexity:
+	- Insertion: O(n) best (nearly sorted), O(n^2) average/worst.
+	- Merge: O(n log n) best/average/worst.
+	- Quick: O(n log n) average, O(n^2) worst (bad pivot choices).
+
+2. What would be fundamentally different if we were sorting a linked list instead of an array?
+Using a linked list means you need the previous element to get to the next element commpared to an array where you can easily access the middle of an array.
+Merge and Quick sort aren't efficient for a linked list since you would need to sequentially access the elements in the middle rather than just selecting it.
+Hence the only viable option is insertion sort since it is already sequentially sorting.
+
+3. Reflect about the differences between merge sort and quick sort. 
+Merge sort makes use of the standard pivot, it being the middle element in the list using an equation of high and low.
+Merge sort guarantees a time complexity of O(nlogn) and is generally more stable since it doesn't rely on randomly selected pivot variables.
+Quick sort on the other hand chooses a random pivot variable to form the left and right recursive sub arrays.
+Quick sort has a best and average case of O(nlogn) but a worst case of O(n^2) because if the randomly selected pivot is unlucky then the sort can quickly become inefficient.

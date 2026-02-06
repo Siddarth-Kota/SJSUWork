@@ -1,3 +1,14 @@
 *.cache/
 *.hw/
 *.runs/
+*.slnx
+*.vcxproj
+*.filters
+*.user
+*.pdb
+*.obj
+*.recipe
+*.ilk
+*.tlog
+*.log
+*.exe

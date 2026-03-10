@@ -15,3 +15,5 @@
 *.sim*/
 *.dcp
 *ip_user_files*/
+*.str
+*.jou

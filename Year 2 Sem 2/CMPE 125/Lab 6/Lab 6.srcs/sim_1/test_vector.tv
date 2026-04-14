@@ -1,0 +1,10 @@
+001_1000 //Exactly 25 cents, should dispense without change
+010_0000 //10 cents, should not dispense
+001_1010 //35 cents, should dispense with 1 dime returned
+100_0000 //5 cents, should not dispense
+100_0000 //10 cents, should not dispense
+010_0000 //20 cents, should not dispense
+010_1100 //30 cents, should dispense with 1 nickel returned
+010_0000 //10 cents, should not dispense
+010_0000 //20 cents, should not dispense
+001_1001 //45 cents, should dispense with 2 dimes returned

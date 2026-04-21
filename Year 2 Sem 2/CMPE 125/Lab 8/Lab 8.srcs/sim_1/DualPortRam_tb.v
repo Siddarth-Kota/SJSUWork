@@ -15,7 +15,7 @@ module DualPortRam_tb();
     );
 
     always #5 clk_a = ~clk_a;
-    always #7 clk_b = ~clk_b;
+    always #5 clk_b = ~clk_b;
 
     initial begin
         clk_a = 0; clk_b = 0;
@@ -26,6 +26,7 @@ module DualPortRam_tb();
 
         @(negedge clk_a);
         we_a = 1; addr_a = 7'd55; d_a = 8'hF0;
+        we_b = 1; addr_b = 7'd55; d_b = 8'h0F;
 
         @(negedge clk_a);
         we_a = 0;

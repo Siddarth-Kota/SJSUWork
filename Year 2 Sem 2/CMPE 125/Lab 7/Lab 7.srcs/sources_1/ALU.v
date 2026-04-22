@@ -26,6 +26,7 @@ module ALU (
             3'b110: begin // SUB
                 {Cout, Y} = A + ~B + 1'b1; 
                 overflow = (A[31] == ~B[31]) && (Y[31] != A[31]);
+                //0011 - 0110 = 1010
             end
             
             3'b111: begin // SLT

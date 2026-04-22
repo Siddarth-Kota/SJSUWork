@@ -35,7 +35,7 @@ module ALU_tb;
         // Test SLT
         A = 32'h00000001; B = 32'h00000002; F = 3'b111; #10;
 
-        // Test zero result
+        
         A = 32'hFFFFFFFF; B = 32'hFFFFFFFF; F = 3'b000; #10;
         $finish;
     end

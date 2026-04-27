@@ -9,6 +9,9 @@ module ALU_tb;
     wire Cout;
     wire zero;
 
+    reg [66:0] test_vectors [0:99]; 
+    integer i;
+
     ALU dut (
         .A(A),
         .B(B),
@@ -20,23 +23,21 @@ module ALU_tb;
     );
 
     initial begin
-        // Test AND
-        A = 32'hFFFF0000; B = 32'h0000FFFF; F = 3'b000; #10;
+        $readmemh("tests.tv", test_vectors);
+
+        i = 0;
         
-        // Test OR
-        A = 32'hFFFF0000; B = 32'h0000FFFF; F = 3'b001; #10;
+        while (test_vectors[i] !== 67'bx) begin
+            {F, A, B} = test_vectors[i];
+            
+            #10;
+            
+            $display("Vector %0d | F=%b A=%h B=%h || Y=%h Z=%b", i, F, A, B, Y, zero);
+            
+            i = i + 1;
+        end
 
-        // Test ADD
-        A = 32'h7FFFFFFF; B = 32'h7FFFFFFF; F = 3'b010; #10;
-
-        // Test SUB
-        A = 32'h00000001; B = 32'h00000002; F = 3'b110; #10;
-
-        // Test SLT
-        A = 32'h00000001; B = 32'h00000002; F = 3'b111; #10;
-
-        
-        A = 32'hFFFFFFFF; B = 32'hFFFFFFFF; F = 3'b000; #10;
+        $display("Simulation complete. Ran %0d test vectors.", i);
         $finish;
     end
 endmodule

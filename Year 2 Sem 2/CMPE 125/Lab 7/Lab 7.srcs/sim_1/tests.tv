@@ -1,0 +1,19 @@
+// Format: F_A_B (Hexadecimal)
+
+// Test AND
+0_FFFF0000_0000FFFF
+
+// Test OR
+1_FFFF0000_0000FFFF
+
+// Test ADD
+2_7FFFFFFF_7FFFFFFF
+
+// Test SUB
+6_00000001_00000002
+
+// Test SLT
+7_00000001_00000002
+
+// Additional AND
+0_FFFFFFFF_FFFFFFFF

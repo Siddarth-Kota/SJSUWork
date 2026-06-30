@@ -24,7 +24,7 @@ module DualPortRam (
     end
 
     always @(posedge clk_b) begin
-        if (we_b)
+        if (we_b && addr_b == addr_a)
             mem[addr_b] <= d_b;
         q_b <= mem[addr_b];
     end
